@@ -1,0 +1,9 @@
+<h1>My Blog List</h1>
+
+Create <a href="/admin/blog/post/add/">Post</a>
+
+<ul>
+    {% for list in blog_list %}
+        <li><a href="{{list.id}}">{{list}}</a> <a href="{{list.id}}/delete/">🗑️</a></li>
+    {% endfor %}
+</ul>
