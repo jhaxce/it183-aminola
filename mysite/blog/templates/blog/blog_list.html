@@ -1,4 +1,4 @@
-<h1>My Blog List</h1>
+<!-- <h1>My Blog List</h1>
 
 Create <a href="/admin/blog/post/add/">Post</a>
 
@@ -6,4 +6,63 @@ Create <a href="/admin/blog/post/add/">Post</a>
     {% for list in blog_list %}
         <li><a href="{{list.id}}">{{list}}</a> <a href="{{list.id}}/delete/">🗑️</a></li>
     {% endfor %}
-</ul>
+</ul> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog Posts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .post-actions {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <a href="{% url 'blog_create' %}">Create New Blog</a>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2 href="#">{{ post.title }}</h2> 
+                <h3 href="#">{{ post.content }}</h3> 
+                <a href="{% url 'blog_update' post.pk %}">Edit</a> 
+                <a href="{% url 'blog_delete' post.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
