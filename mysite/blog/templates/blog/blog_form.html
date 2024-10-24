@@ -54,7 +54,7 @@
     </style>
 </head>
 <body>
-    <h1>Create / Edit Blog</h1>
+    <h1>{{ form_type }} Blog</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

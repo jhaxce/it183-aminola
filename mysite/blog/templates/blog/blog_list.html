@@ -57,10 +57,10 @@ Create <a href="/admin/blog/post/add/">Post</a>
     <ul>
         {% for post in posts %}
             <li>
-                <h2 href="#">{{ post.title }}</h2> 
-                <h3 href="#">{{ post.content }}</h3> 
-                <a href="{% url 'blog_update' post.pk %}">Edit</a> 
-                <a href="{% url 'blog_delete' post.pk %}">Delete</a>
+                <h2><a href="{% url 'blog_detail' post.id %}">{{ post.id }}</a> - {{ post.title }}</h2> 
+                <h3>{{ post.content }}</h3> 
+                <a href="{% url 'blog_update' post.id %}">Edit</a> 
+                <a href="{% url 'blog_delete' post.id %}">Delete</a>
             </li>
         {% endfor %}
     </ul>

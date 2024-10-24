@@ -23,7 +23,7 @@
 #     each_post.delete()
 #     return HttpResponseRedirect('/posts/')
 
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm
 
@@ -39,10 +39,10 @@ def blog_create(request):
             return redirect('blog_list')
     else:
         form = PostForm()
-    return render(request, 'blog/blog_form.html', {'form': form})
+    return render(request, 'blog/blog_form.html', {'form': form, 'form_type': 'Create'})
 
-def blog_update(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def blog_update(request, id):
+    post = Post.objects.get(id=id)
     if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
@@ -50,10 +50,10 @@ def blog_update(request, pk):
             return redirect('blog_list')
     else:
         form = PostForm(instance=post)
-    return render(request, 'blog/blog_form.html', {'form': form})
+    return render(request, 'blog/blog_form.html', {'form': form, 'form_type': 'Edit'})
 
-def blog_delete(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+def blog_delete(request, id):
+    post = Post.objects.get(id=id)
     if request.method == 'POST':
         post.delete()
         return redirect('blog_list')
