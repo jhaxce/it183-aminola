@@ -41,6 +41,10 @@ def blog_create(request):
         form = PostForm()
     return render(request, 'blog/blog_form.html', {'form': form, 'form_type': 'Create'})
 
+def blog_detail(request, id):
+    post = Post.objects.get(id=id)
+    return render(request, 'blog/blog_detail.html', {'blog_list': post})
+
 def blog_update(request, id):
     post = Post.objects.get(id=id)
     if request.method == 'POST':
