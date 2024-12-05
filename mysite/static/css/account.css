@@ -1,0 +1,88 @@
+/* Container Styling */
+.account-container {
+    margin-top: 50px;
+}
+
+/* Account Box Styling */
+.account-box {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account-box h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Settings Section Styling */
+.settings-section {
+    margin-bottom: 30px;
+}
+
+.settings-section h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.settings-section .form-group {
+    margin-bottom: 15px;
+}
+
+.settings-section label {
+    font-weight: bold;
+    color: #555;
+}
+
+.settings-section input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.settings-section button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.settings-section button:hover {
+    background-color: #0056b3;
+}
+
+.settings-section .btn-secondary {
+    background-color: #6c757d;
+}
+
+.settings-section .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* Access Token */
+.token-box {
+    font-size: 1.1rem;
+    color: #333;
+    background-color: #eef3f7;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.token-box span {
+    font-weight: bold;
+    color: #007bff;
+}

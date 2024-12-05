@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Task Manager{% endblock %}
+
+{% block content %}
+
+<h2>Login</h2>
+
+{% if messages %}
+    <div class="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <button type="submit">Login</button>
+</form>
+
+<p>Don't have an account? <a href="{% url 'signup' %}">Sign Up</a></p>
+{% endblock %}

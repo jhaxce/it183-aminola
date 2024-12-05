@@ -1,0 +1,67 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Account Settings - Task Manager{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container account-container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="account-box">
+                <h1 class="text-center mb-4">Account Settings</h1>
+
+                <h3><strong>Current Username:</strong> {{ request.user.username }}</h3>
+                
+                <!-- Update Username -->
+                <div class="settings-section mb-4">
+                    <h3>Update Username</h3>
+                    <form method="POST" action="{% url 'update_username' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">New Username:</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Username</button>
+                    </form>
+                </div>
+
+                <!-- Update Password -->
+                <div class="settings-section mb-4">
+                    <h3>Update Password</h3>
+                    <form method="POST" action="{% url 'update_password' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="current_password">Current Password:</label>
+                            <input type="password" id="current_password" name="current_password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="new_password">New Password:</label>
+                            <input type="password" id="new_password" name="new_password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm New Password:</label>
+                            <input type="password" id="confirm_password" name="confirm_password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                    </form>
+                </div>
+
+                <!-- Access Token -->
+                <div class="settings-section">
+                    <h3>Access Token</h3>
+                    <p class="token-box">Your Token: <span id="access-token">{{ token }}</span></p>
+                    <button id="copy-token" class="btn btn-primary">Copy Token</button>
+                    <form method="POST" action="{% url 'regenerate_token' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-secondary">Regenerate Token</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static 'js/account.js' %}"></script>
+{% endblock %}

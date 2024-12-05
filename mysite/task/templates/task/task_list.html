@@ -1,0 +1,89 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block title %}Tasks - Task Manager{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/task_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Tasks</h2>
+
+<!-- Display pinned categories (Priority, Task, Completed) -->
+<div class="task-category box">
+    <h3 class="pinned">Priority <span class="count">{{ priority_count }}</span></h3>
+    <ul class="task-list">
+        {% for task in priority_tasks %}
+        <li class="task-item" data-task-id="{{ task.id }}">
+            <div class="task-header">
+                <img src="{% static 'images/task_icon.png' %}" alt="file icon" class="task-icon">
+                <span class="task-title {% if task.is_done %}completed{% endif %}">{{ task.title }}</span>
+                <div class="task-options">
+                    <button class="unpin-btn">📍</button>
+                    <button class="edit-btn" onclick="window.location.href='{% url 'edit_task' task.id %}'">🖋</button>
+                    <button class="delete-btn" onclick="window.location.href='{% url 'delete_task' task.id %}'">🗑</button>
+                </div>
+                <input type="checkbox" class="task-checkbox" {% if task.is_done %}checked{% endif %}>
+            </div>
+            <div class="task-details">
+                <p class="task-desc">{{ task.desc }}</p>
+                <p class="task-meta">Edited: {{ task.timestamp }} | Tag: {{ task.tag }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="task-category box">
+    <h3 class="pinned">Normal <span class="count">{{ task_count }}</span></h3>
+    <ul class="task-list">
+        {% for task in task_tasks %}
+        <li class="task-item" data-task-id="{{ task.id }}">
+            <div class="task-header">
+                <img src="{% static 'images/task_icon.png' %}" alt="file icon" class="task-icon">
+                <span class="task-title {% if task.is_done %}completed{% endif %}">{{ task.title }}</span>
+                <div class="task-options">
+                   <button class="pin-btn">📌</button>
+                   <button class="edit-btn" onclick="window.location.href='{% url 'edit_task' task.id %}'">🖋</button>
+                   <button class="delete-btn" onclick="window.location.href='{% url 'delete_task' task.id %}'">🗑</button>
+                </div>
+                <input type="checkbox" class="task-checkbox" {% if task.is_done %}checked{% endif %}>
+            </div>
+            <div class="task-details">
+                <p class="task-desc">{{ task.desc }}</p>
+                <p class="task-meta">Edited: {{ task.timestamp }} | Tag: {{ task.tag }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="task-category box">
+    <h3 class="pinned" id="c">
+        Completed <!-- <span class="count">{{ completed_count }}</span> -->
+        <button type="button" id="delete-all-btn" class="btn-delete-completed" style="background-color: #f44336; color: white; padding: 10px 20px; border: none; cursor: pointer;">
+            Delete All Completed Tasks
+        </button>
+    </h3>
+    <ul class="task-list">
+        {% for task in completed_tasks %}
+        <li class="task-item" data-task-id="{{ task.id }}">
+            <div class="task-header">
+                <img src="{% static 'images/task_icon.png' %}" alt="file icon" class="task-icon">
+                <span class="task-title completed">{{ task.title }}</span>
+                <div class="task-options">
+                    <button class="delete-btn" onclick="window.location.href='{% url 'delete_task' task.id %}'">🗑</button>
+                </div>
+                <input type="checkbox" class="task-checkbox" checked>
+            </div>
+            <div class="task-details">
+                <p class="task-desc">{{ task.desc }}</p>
+                <p class="task-meta">Edited: {{ task.timestamp }} | Tag: {{ task.tag }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script src="{% static 'js/task_list.js' %}"></script>
+{% endblock %}

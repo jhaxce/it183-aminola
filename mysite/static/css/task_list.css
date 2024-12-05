@@ -1,0 +1,196 @@
+/* General task list styling */
+.task-category {
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.pinned {
+    position: sticky;
+    top: 50px;
+    z-index: 10;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+}
+
+.pinned#c {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.box {
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+.count {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: normal;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.task-title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+/* Make the checkbox bigger */
+.task-checkbox {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+/* Add some styling for completed tasks */
+.completed {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.task-options {
+    position: relative;
+}
+
+.options-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.options-menu {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 5px;
+    display: none;
+    z-index: 10;
+}
+
+.options-btn:hover + .options-menu {
+    display: block;
+}
+
+.task-details {
+    margin-top: 10px;
+}
+
+.task-desc {
+    font-size: 1rem;
+    color: #555;
+    white-space: nowrap;        /* Prevent text from wrapping to the next line */
+    overflow: hidden;           /* Hide the part of text that doesn't fit */
+    text-overflow: ellipsis;    /* Add ellipsis when text overflows */
+    width: 100%;                /* Ensure it takes up the full width of its container */
+}
+
+.task-meta {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+button {
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.edit-btn, .delete-btn {
+    background-color: #28a745;
+    margin-bottom: 5px;
+}
+
+.edit-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.unpin-btn {
+    background-color: #ffc107;
+    margin-right: 30px;
+}
+
+.unpin-btn:hover {
+    background-color: #e0a800;
+    margin-right: 30px;
+}
+
+.pin-btn {
+    background-color: #17a2b8;
+    margin-right: 30px;
+}
+
+.pin-btn:hover {
+    margin-right: 30px;
+    background-color: #138496;
+}
+
+/* task_list.css */
+.btn-delete-completed {
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-delete-completed:hover {
+    background-color: #d32f2f;
+}
+
